@@ -1,32 +1,27 @@
 import 'package:dartnative/dartnative.dart';
 
-class PieChartPage extends StatelessWidget {
-  const PieChartPage({super.key});
-
-  @override
-  Widget build(BuildContext context) => Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      const Text('円グラフ', style: _titleStyle),
-      const SizedBox(height: 8),
-      const Text('カテゴリ別の売上構成', style: _descriptionStyle),
-      const SizedBox(height: 32),
-      Center(
-        child: CustomPaint(
-          size: const Size(240, 240),
-          painter: const PieChartPainter([45, 30, 25]),
-        ),
-      ),
-    ],
-  );
-}
-
+/// Paints a donut-style pie chart, with each entry in [values] rendered as
+/// a proportional arc slice.
+///
+/// [backgroundColor] (typically translucent) draws a rounded "glass" panel
+/// behind the chart.
 class PieChartPainter extends CustomPainter {
-  const PieChartPainter(this.values);
+  const PieChartPainter(this.values, {this.backgroundColor});
   final List<double> values;
+  final Color? backgroundColor;
 
   @override
   void paint(Canvas canvas, Size size) {
+    if (backgroundColor != null) {
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(0, 0, size.width, size.height),
+          16,
+        ),
+        Paint(color: backgroundColor!),
+      );
+    }
+
     const colors = [Color(0xFF265D4B), Color(0xFF6C55B5), Color(0xFFE4A34C)];
     final rect = Rect.fromLTWH(0, 0, size.width, size.height);
     final total = values.reduce((a, b) => a + b);
@@ -52,10 +47,3 @@ class PieChartPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant PieChartPainter oldDelegate) => false;
 }
-
-const _titleStyle = TextStyle(
-  color: Color(0xFF20201E),
-  fontSize: 26,
-  fontWeight: FontWeight.w800,
-);
-const _descriptionStyle = TextStyle(color: Color(0xFF767670), fontSize: 14);

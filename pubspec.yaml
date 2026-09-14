@@ -1,29 +1,20 @@
-name: dartnative_chart
-description: "A new DartNative project."
-publish_to: 'none'
-version: 0.1.0+1
+name: chart_kit
+description: >-
+  Reusable line, vertical bar, pie, and horizontal bar chart painters for
+  DartNative apps, built with CustomPaint/CustomPainter — no third-party
+  chart package required.
+version: 0.2.0
+homepage: https://github.com/jboylabo/dartnative_chart
+repository: https://github.com/jboylabo/dartnative_chart
 
 environment:
   sdk: ^3.12.0-192.0.dev
 
-# Plain version deps: `dn pub get` resolves DartNative packages from your
+# Plain version dep: `dn pub get` resolves the DartNative framework from your
 # installed SDK (closed resolution) — no registry setup, works offline.
 dependencies:
   dartnative: ^1.0.0
-  dartnative_ios: ^1.0.0
-  dartnative_android: ^1.0.0
-  dartnative_skia: ^1.0.0
 
 dev_dependencies:
   lints: ^6.0.0
-  image: ^4.0.0
-
-dartnative_skia:
-  variant: full
-
-dartnative:
-  assets:
-    - assets/dn-logo.png
-
-# Branded launch splash + app icon: add the dartnative_splash plugin from
-# dartpub.dev, then see tool/generate_app_assets.dart.
+  test: ^1.25.0
