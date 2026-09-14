@@ -10,11 +10,18 @@ class VerticalBarChartPage extends StatelessWidget {
     children: [
       const Text('Vertical Bar Chart', style: _titleStyle),
       const SizedBox(height: 8),
-      const Text('Orders by day of week', style: _descriptionStyle),
+      const Text(
+        'Orders by day of week — glass panel + gradient bars',
+        style: _descriptionStyle,
+      ),
       const SizedBox(height: 32),
       CustomPaint(
         size: Size(MediaQuery.of(context).size.width - 40, 240),
-        painter: const VerticalBarChartPainter([28, 46, 34, 62, 52, 74, 58]),
+        painter: const VerticalBarChartPainter(
+          [28, 46, 34, 62, 52, 74, 58],
+          backgroundColor: Color(0x14000000),
+          barGradientColors: [Color(0xFF6C55B5), Color(0xFFB59CF6)],
+        ),
       ),
     ],
   );

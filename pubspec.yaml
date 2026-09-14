@@ -3,7 +3,7 @@ description: >-
   Reusable line, vertical bar, pie, and horizontal bar chart painters for
   DartNative apps, built with CustomPaint/CustomPainter — no third-party
   chart package required.
-version: 0.1.0
+version: 0.2.0
 homepage: https://github.com/jboylabo/dartnative_chart
 repository: https://github.com/jboylabo/dartnative_chart
 

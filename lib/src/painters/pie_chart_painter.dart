@@ -2,12 +2,26 @@ import 'package:dartnative/dartnative.dart';
 
 /// Paints a donut-style pie chart, with each entry in [values] rendered as
 /// a proportional arc slice.
+///
+/// [backgroundColor] (typically translucent) draws a rounded "glass" panel
+/// behind the chart.
 class PieChartPainter extends CustomPainter {
-  const PieChartPainter(this.values);
+  const PieChartPainter(this.values, {this.backgroundColor});
   final List<double> values;
+  final Color? backgroundColor;
 
   @override
   void paint(Canvas canvas, Size size) {
+    if (backgroundColor != null) {
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(0, 0, size.width, size.height),
+          16,
+        ),
+        Paint(color: backgroundColor!),
+      );
+    }
+
     const colors = [Color(0xFF265D4B), Color(0xFF6C55B5), Color(0xFFE4A34C)];
     final rect = Rect.fromLTWH(0, 0, size.width, size.height);
     final total = values.reduce((a, b) => a + b);

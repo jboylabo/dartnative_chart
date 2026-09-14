@@ -1,8 +1,10 @@
 import 'package:dartnative/dartnative.dart';
 
+import 'chart/bubble_chart_page.dart';
 import 'chart/horizontal_bar_chart_page.dart';
 import 'chart/line_chart_page.dart';
 import 'chart/pie_chart_page.dart';
+import 'chart/radar_chart_page.dart';
 import 'chart/vertical_bar_chart_page.dart';
 import 'dartnative_plugin_registrant.dart';
 
@@ -26,12 +28,14 @@ class ChartSampleApp extends StatefulWidget {
 }
 
 class _ChartSampleAppState extends State<ChartSampleApp> {
-  static const labels = ['Line', 'Bar', 'Pie', 'H-Bar'];
+  static const labels = ['Line', 'Bar', 'Pie', 'H-Bar', 'Radar', 'Bubble'];
   static const pages = <Widget>[
     LineChartPage(),
     VerticalBarChartPage(),
     PieChartPage(),
     HorizontalBarChartPage(),
+    RadarChartPage(),
+    BubbleChartPage(),
   ];
 
   int selectedIndex = 0;
