@@ -1,26 +1,7 @@
 import 'package:dartnative/dartnative.dart';
 
-class PieChartPage extends StatelessWidget {
-  const PieChartPage({super.key});
-
-  @override
-  Widget build(BuildContext context) => Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      const Text('円グラフ', style: _titleStyle),
-      const SizedBox(height: 8),
-      const Text('カテゴリ別の売上構成', style: _descriptionStyle),
-      const SizedBox(height: 32),
-      Center(
-        child: CustomPaint(
-          size: const Size(240, 240),
-          painter: const PieChartPainter([45, 30, 25]),
-        ),
-      ),
-    ],
-  );
-}
-
+/// Paints a donut-style pie chart, with each entry in [values] rendered as
+/// a proportional arc slice.
 class PieChartPainter extends CustomPainter {
   const PieChartPainter(this.values);
   final List<double> values;
@@ -52,10 +33,3 @@ class PieChartPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant PieChartPainter oldDelegate) => false;
 }
-
-const _titleStyle = TextStyle(
-  color: Color(0xFF20201E),
-  fontSize: 26,
-  fontWeight: FontWeight.w800,
-);
-const _descriptionStyle = TextStyle(color: Color(0xFF767670), fontSize: 14);

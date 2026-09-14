@@ -26,7 +26,7 @@ class ChartSampleApp extends StatefulWidget {
 }
 
 class _ChartSampleAppState extends State<ChartSampleApp> {
-  static const labels = ['折れ線', '縦棒', '円', '横棒'];
+  static const labels = ['Line', 'Bar', 'Pie', 'H-Bar'];
   static const pages = <Widget>[
     LineChartPage(),
     VerticalBarChartPage(),

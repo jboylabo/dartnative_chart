@@ -1,24 +1,7 @@
 import 'package:dartnative/dartnative.dart';
 
-class LineChartPage extends StatelessWidget {
-  const LineChartPage({super.key});
-
-  @override
-  Widget build(BuildContext context) => Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      const Text('折れ線グラフ', style: _titleStyle),
-      const SizedBox(height: 8),
-      const Text('1週間のアクセス数', style: _descriptionStyle),
-      const SizedBox(height: 32),
-      CustomPaint(
-        size: Size(MediaQuery.of(context).size.width - 40, 240),
-        painter: const LineChartPainter([18, 30, 24, 42, 38, 55, 62]),
-      ),
-    ],
-  );
-}
-
+/// Paints a line chart connecting [values] left to right, normalized to the
+/// canvas size with a light horizontal grid behind it.
 class LineChartPainter extends CustomPainter {
   const LineChartPainter(this.values);
   final List<double> values;
@@ -52,10 +35,3 @@ class LineChartPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant LineChartPainter oldDelegate) => false;
 }
-
-const _titleStyle = TextStyle(
-  color: Color(0xFF20201E),
-  fontSize: 26,
-  fontWeight: FontWeight.w800,
-);
-const _descriptionStyle = TextStyle(color: Color(0xFF767670), fontSize: 14);
